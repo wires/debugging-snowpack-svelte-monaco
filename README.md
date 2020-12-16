@@ -12,7 +12,7 @@ I bootstrapped this using
 pnpx create-snowpack-app --use-pnpm --template @snowpack/app-template-svelte snowpack-svelte-monaco
 ```
 
-then I modified `snowpack.config.js` adding
+We need to add monaco and the worked to `snowpack.config.js`
 
 ```js
   install: [
@@ -23,6 +23,20 @@ then I modified `snowpack.config.js` adding
     'monaco-editor/esm/vs/language/typescript/ts.worker.js',
     'monaco-editor/esm/vs/editor/editor.worker.js'
   ]
+```
+
+but this is not enough, if you do not refer to these modules, they are not placed in `web_modules` when you run `snowpack build`.
+https://github.com/snowpackjs/snowpack/discussions/1756
+
+So we also modify `index.js`
+
+```js
+import 'monaco-editor'
+import 'monaco-editor/esm/vs/language/json/json.worker.js'
+import 'monaco-editor/esm/vs/language/css/css.worker.js'
+import 'monaco-editor/esm/vs/language/html/html.worker.js'
+import 'monaco-editor/esm/vs/language/typescript/ts.worker.js'
+import 'monaco-editor/esm/vs/editor/editor.worker.js'
 ```
 
 then I add this to `index.html`
