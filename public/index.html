@@ -9,7 +9,41 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- setting up monaco editor -->
+    <script type="module">
+      import * as Monaco from '/web_modules/monaco-editor.js'
+      window.Monaco = Monaco
+      window.MonacoEnvironment = {
+        getWorker(workerId, label) {
+          return new Worker(
+            window.MonacoEnvironment.getWorkerUrl(workerId, label),
+            {
+              name: label,
+              type: 'module'
+            }
+          );
+        },
+        getWorkerUrl: function (moduleId, label) {
+          if (label === 'json') {
+            return '/web_modules/monaco-editor/esm/vs/language/json/json.worker.js';
+          }
+          if (label === 'css') {
+            return '/web_modules/monaco-editor/esm/vs/language/css/css.worker.js';
+          }
+          if (label === 'html') {
+            return '/web_modules/monaco-editor/esm/vs/language/html/html.worker.js';
+          }
+          if (label === 'typescript' || label === 'javascript') {
+            return '/web_modules/monaco-editor/esm/vs/language/typescript/ts.worker.js';
+          }
+          return '/web_modules/monaco-editor/esm/vs/editor/editor.worker.js';
+        }
+      };
+    </script>
+    
+    <!-- the app -->
     <script type="module" src="/dist/index.js"></script>
+    
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

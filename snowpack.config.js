@@ -9,16 +9,21 @@ module.exports = {
     '@snowpack/plugin-dotenv',
   ],
   install: [
-    /* ... */
+    'monaco-editor',
+    'monaco-editor/esm/vs/language/json/json.worker.js',
+    'monaco-editor/esm/vs/language/css/css.worker.js',
+    'monaco-editor/esm/vs/language/html/html.worker.js',
+    'monaco-editor/esm/vs/language/typescript/ts.worker.js',
+    'monaco-editor/esm/vs/editor/editor.worker.js'
   ],
   installOptions: {
-    /* ... */
+
   },
   devOptions: {
     /* ... */
   },
   buildOptions: {
-    /* ... */
+    clean: true,
   },
   proxy: {
     /* ... */
