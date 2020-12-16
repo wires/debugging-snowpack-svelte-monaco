@@ -9,6 +9,8 @@ module.exports = {
     '@snowpack/plugin-dotenv',
   ],
   install: [
+    // if you do not refer to these modules, they are to placed in web_modules
+    // https://github.com/snowpackjs/snowpack/discussions/1756
     'monaco-editor',
     'monaco-editor/esm/vs/language/json/json.worker.js',
     'monaco-editor/esm/vs/language/css/css.worker.js',

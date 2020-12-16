@@ -1,4 +1,11 @@
-import App from "./App.svelte";
+import App from "./App.svelte"
+
+import 'monaco-editor'
+import 'monaco-editor/esm/vs/language/json/json.worker.js'
+import 'monaco-editor/esm/vs/language/css/css.worker.js'
+import 'monaco-editor/esm/vs/language/html/html.worker.js'
+import 'monaco-editor/esm/vs/language/typescript/ts.worker.js'
+import 'monaco-editor/esm/vs/editor/editor.worker.js'
 
 let app = new App({
   target: document.body,
